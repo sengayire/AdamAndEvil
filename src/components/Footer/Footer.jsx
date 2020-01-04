@@ -33,7 +33,7 @@ function Footer({ ...props }) {
                 className={classes.block}
                 target="_blank"
               >
-                Full Stack App Generator 
+                {/* Full Stack App Generator  */}
               </a>
             </ListItem>
           </List>
@@ -48,13 +48,13 @@ function Footer({ ...props }) {
           >
             Creative Tim
           </a>{" "}
-          Coded by  
+          {/* Coded by   */}
           <a
             href="https://appseed.us"
             className={aClasses}
             target="_blank"
           >
-            AppSeed
+            {/* AppSeed */}
           </a>
         </div>
       </div>

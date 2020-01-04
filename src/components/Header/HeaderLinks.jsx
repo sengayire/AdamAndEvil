@@ -35,7 +35,7 @@ const Logout = connect(dispatch => ({ dispatch }))(props => (
     <ListItem className={props.classes.listItem}>
         <Button 
         href=""
-        color="transparent"
+        color={props.color}
         target="_blank"
         style={{color: 'white'}}
         onClick={() => props.dispatch(logout())}
@@ -46,7 +46,7 @@ const Logout = connect(dispatch => ({ dispatch }))(props => (
 
 
 function HeaderLinks({ ...props }) {
-  const { classes } = props;
+  const { classes, color } = props;
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
@@ -60,10 +60,10 @@ function HeaderLinks({ ...props }) {
           buttonIcon={Apps}
           dropdownList={[
             <Link to="/" className={classes.dropdownLink}>
-              Landing Page
+              Home
             </Link>,
             <Link to="/profile-page" className={classes.dropdownLink}>
-              Profile Page
+              Profile
             </Link>,
             <Link to="/components" className={classes.dropdownLink}>
               Components
@@ -78,12 +78,12 @@ function HeaderLinks({ ...props }) {
                 href=""
                 color="transparent"
                 target="_blank"
-                style={{color: 'white'}}
+                style={{color}}
                 className={classes.navLink}>{props.state.user ? `${props.state.user.name} ${props.state.user.surname}` : `Login`}</Button>
             </Link>
         </ListItem>
         {
-            props.state.user ? <Logout {...props}/> : <RegisterButton {...props} />
+            props.state.user ? <Logout color={color}{...props}/> : <RegisterButton {...props} />
         }
     </List>
   );

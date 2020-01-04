@@ -79,12 +79,15 @@ function CustomInput({ ...props }) {
         id={id}
         {...inputProps}
       />
-      <ul style={{ padding: 0, margin: 0, marginTop: 10, listStyleType: 'none' }}>
-        { errors && errors.map(message => (
+      <ul
+        style={{ padding: 0, margin: 0, marginTop: 10, listStyleType: "none" }}
+      >
+        {errors &&
+          errors.map(message => (
             <li key={message}>
-                <p style={{ color: 'red', margin: 0 }}>{message}</p>
+              <p style={{ color: "red", margin: 0 }}>{message}</p>
             </li>
-        ))}
+          ))}
       </ul>
     </FormControl>
   );

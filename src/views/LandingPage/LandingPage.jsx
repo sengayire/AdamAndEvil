@@ -32,7 +32,7 @@ class LandingPage extends React.Component {
         <Header
           color="transparent"
           routes={dashboardRoutes}
-          brand="Material Kit React"
+          brand="AdamAndEvil"
           rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{
@@ -45,21 +45,22 @@ class LandingPage extends React.Component {
           <div className={classes.container}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classes.title}>Full Stack Web App.</h1>
+                <h1 className={classes.title}>Welcome to AdamAndEvil</h1>
                 <h4>
-                Designed by Creative-Tim, coded by AppSeed.us.
-                <br/>
-                This web app can be generated in React combined with Express / Flask or Laravel. Your choice :)
+                  We Offer you affordable services
+                  <br />
+                  This where you have write Quick note of your product /
+                  remember keep it simple and concise :)
                 </h4>
                 <br />
                 <Button
-                  color="danger"
+                  color="info"
                   size="lg"
                   href="https://appseed.us/fullstack-apps-generator"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i className="fas fa-rocket" /> Full Stack App Generator
+                  <i className="" /> Post Ad
                 </Button>
               </GridItem>
             </GridContainer>

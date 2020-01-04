@@ -24,22 +24,22 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 // assets
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/backgroundImage.png";
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-        cardAnimaton: "cardHidden",
-        email: {
-            value: "",
-            errors: []
-        },
-        password: {
-            value: "",
-            errors: []
-        }
+      cardAnimaton: "cardHidden",
+      email: {
+        value: "",
+        errors: []
+      },
+      password: {
+        value: "",
+        errors: []
+      }
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -55,55 +55,63 @@ class LoginPage extends React.Component {
     );
   }
   handleInputChange(e) {
-      const {name, value} = e.target;
+    const { name, value } = e.target;
 
-      this.setState(state => ({ [name]: { ...this.state[name], value } }));
+    this.setState(state => ({ [name]: { ...this.state[name], value } }));
   }
-  submitForm(e){
+  submitForm(e) {
     e.preventDefault();
 
     const user = {
-        email: this.state.email.value,
-        password: this.state.password.value
-    }
+      email: this.state.email.value,
+      password: this.state.password.value
+    };
 
-    const url = 'http://localhost:3000/api/users/login';
+    const url = "http://localhost:3000/api/users/login";
 
     fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user }), // body data type must match "Content-Type" header
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user }) // body data type must match "Content-Type" header
     })
-    .then( res => res.json())
-    .then( data => {
+      .then(res => res.json())
+      .then(data => {
         const { errors, user } = data;
 
-        this.setState({ email: { ...this.state.email, errors: [] }, password: { ...this.state.password, errors: [] }  })
+        this.setState({
+          email: { ...this.state.email, errors: [] },
+          password: { ...this.state.password, errors: [] }
+        });
 
         if (errors) {
-            for (let name in errors) {
-                const errorMessage = errors[name];
+          for (let name in errors) {
+            const errorMessage = errors[name];
 
-                this.setState(state => ({ [name]: { ...state[name], errors: [ ...state[name].errors, errorMessage ] } }));
-            }
+            this.setState(state => ({
+              [name]: {
+                ...state[name],
+                errors: [...state[name].errors, errorMessage]
+              }
+            }));
+          }
 
-            return;
+          return;
         }
 
         if (user) {
-            const { token, ...userData } = user;
+          const { token, ...userData } = user;
 
-            Cookies.create('token', token, null);
-            
-            this.props.dispatch(login(userData));
-            this.props.history.push('/');
+          Cookies.create("token", token, null);
+
+          this.props.dispatch(login(userData));
+          this.props.history.push("/");
         }
-    });
+      });
   }
   render() {
     const { classes, ...rest } = this.props;
@@ -112,7 +120,7 @@ class LoginPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand="Material Kit React"
+          brand="AdamAndEvil"
           rightLinks={<HeaderLinks />}
           {...rest}
         />
@@ -129,7 +137,7 @@ class LoginPage extends React.Component {
               <GridItem xs={12} sm={12} md={4}>
                 <Card className={classes[this.state.cardAnimaton]}>
                   <form onSubmit={this.submitForm} className={classes.form}>
-                    <CardHeader color="primary" className={classes.cardHeader}>
+                    <CardHeader color="success" className={classes.cardHeader}>
                       <h4>Login</h4>
                       <div className={classes.socialLine}>
                         <Button
@@ -181,7 +189,6 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
-                        
                       />
                       <CustomInput
                         labelText="Password"
@@ -206,7 +213,7 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button type="submit" simple color="primary" size="lg">
+                      <Button type="submit" simple color="success" size="lg">
                         Login
                       </Button>
                     </CardFooter>
