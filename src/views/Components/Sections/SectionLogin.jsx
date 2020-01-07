@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -18,18 +19,18 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import loginStyle from "assets/jss/material-kit-react/views/componentsSections/loginStyle.jsx";
 
-class SectionLogin extends React.Component {
+class SectionLogin extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, submitForm, handleInputChange } = this.props;
     return (
       <div className={classes.section}>
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card>
-                <form className={classes.form}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
-                    <h4>Login</h4>
+                <form className={classes.form} onSubmit={submitForm}>
+                  <CardHeader color="success" className={classes.cardHeader}>
+                    <h4>Register</h4>
                     <div className={classes.socialLine}>
                       <Button
                         justIcon
@@ -76,6 +77,25 @@ class SectionLogin extends React.Component {
                       formControlProps={{
                         fullWidth: true
                       }}
+                      name="firstName"
+                      onChange={handleInputChange}
+                      inputProps={{
+                        type: "text",
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <People className={classes.inputIconsColor} />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                    <CustomInput
+                      labelText="SurName..."
+                      id="surname"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      name="surName"
+                      onChange={handleInputChange}
                       inputProps={{
                         type: "text",
                         endAdornment: (
@@ -91,6 +111,8 @@ class SectionLogin extends React.Component {
                       formControlProps={{
                         fullWidth: true
                       }}
+                      name="email"
+                      onChange={handleInputChange}
                       inputProps={{
                         type: "email",
                         endAdornment: (
@@ -106,6 +128,8 @@ class SectionLogin extends React.Component {
                       formControlProps={{
                         fullWidth: true
                       }}
+                      name="password"
+                      onChange={handleInputChange}
                       inputProps={{
                         type: "password",
                         endAdornment: (
@@ -118,12 +142,22 @@ class SectionLogin extends React.Component {
                       }}
                     />
                   </CardBody>
-                  <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+
+                  <CardFooter
+                    className={classes.cardFooter}
+                    style={{ display: "block" }}
+                    justify="center"
+                  >
+                    <Button type="submit" color="success" size="lg">
                       Get started
                     </Button>
                   </CardFooter>
                 </form>
+                <Link to="/login-page">
+                  <Button simple color="warning" size="sm">
+                    Already have an account Login
+                  </Button>
+                </Link>
               </Card>
             </GridItem>
           </GridContainer>

@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
-import Favorite from "@material-ui/icons/Favorite";
 // core components
 import IconButton from "@material-ui/core/IconButton";
 import Dialog from "@material-ui/core/Dialog";
@@ -12,13 +9,12 @@ import Slide from "@material-ui/core/Slide";
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import Close from "@material-ui/icons/Close";
 import Button from "components/CustomButtons/Button.jsx";
-import { Z_BLOCK } from "zlib";
+
 const Transition = props => {
   return <Slide direction="down" {...props} />;
 };
 class ModelButton extends Component {
   state = {};
-
   handleClickOpen(modal) {
     var x = [];
     x[modal] = true;
@@ -40,7 +36,7 @@ class ModelButton extends Component {
     });
   }
   render() {
-    const { classes, role, color } = this.props;
+    const { classes, role, color, content } = this.props;
     return (
       <div style={{ display: "inline" }}>
         <Button
@@ -77,24 +73,13 @@ class ModelButton extends Component {
             >
               <Close className={classes.modalClose} />
             </IconButton>
-            <h4 className={classes.modalTitle}>Modal title</h4>
+            <h4 className={classes.modalTitle}>Your Ads</h4>
           </DialogTitle>
           <DialogContent
             id="classic-modal-slide-description"
             className={classes.modalBody}
           >
-            <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean. A small river named Duden flows by their
-              place and supplies it with the necessary regelialia. It is a
-              paradisematic country, in which roasted parts of sentences fly
-              into your mouth. Even the all-powerful Pointing has no control
-              about the blind texts it is an almost unorthographic life One day
-              however a small line of blind text by the name of Lorem Ipsum
-              decided to leave for the far World of Grammar.
-            </p>
+            <div>{content}</div>
           </DialogContent>
           <DialogActions className={classes.modalFooter}>
             <Button color="transparent" simple>
