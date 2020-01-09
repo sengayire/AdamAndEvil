@@ -14,14 +14,14 @@ class PostAds extends Component {
     });
   };
 
-  theme = createMuiTheme({
-    spacing: 4,
-    palette: {
-      primary: {
-        main: "#007bff"
-      }
-    }
-  });
+//   theme = createMuiTheme({
+//     spacing: 4,
+//     palette: {
+//       primary: {
+//         main: "#007bff"
+//       }
+//     }
+//   });
   render() {
     const { classes } = this.props;
     return (
