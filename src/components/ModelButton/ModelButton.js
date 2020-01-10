@@ -36,7 +36,7 @@ class ModelButton extends Component {
     });
   }
   render() {
-    const { classes, role, color, content } = this.props;
+    const { classes, role, color, content, onClick, title } = this.props;
     return (
       <div style={{ display: "inline" }}>
         <Button
@@ -73,7 +73,7 @@ class ModelButton extends Component {
             >
               <Close className={classes.modalClose} />
             </IconButton>
-            <h4 className={classes.modalTitle}>Your Ads</h4>
+            <h4 className={classes.modalTitle}>{title}</h4>
           </DialogTitle>
           <DialogContent
             id="classic-modal-slide-description"
@@ -82,7 +82,7 @@ class ModelButton extends Component {
             <div>{content}</div>
           </DialogContent>
           <DialogActions className={classes.modalFooter}>
-            <Button color="transparent" simple>
+            <Button onClick={onClick} color="transparent" simple>
               Save
             </Button>
             <Button

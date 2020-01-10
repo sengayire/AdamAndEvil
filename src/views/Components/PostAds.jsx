@@ -1,29 +1,31 @@
 import React, { Component } from "react";
-import { createMuiTheme } from "@material-ui/core";
 import { DropzoneArea } from "material-ui-dropzone";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Email from "@material-ui/icons/Email";
-import ImageUploader from "react-images-upload";
+import work5 from "../../assets/img/examples/studio-5.jpg";
+const cloudinary = require("cloudinary/lib/cloudinary");
+
 class PostAds extends Component {
   state = {
     files: []
   };
+  componentWillReceiveProps(nextProps) {
+    const { clicked } = nextProps;
+    const { files } = this.state;
+    if (clicked) {
+      cloudinary.uploader.upload(
+        "../../assets/img/examples/studio-5.jpg",
+        function(error, result) {
+          console.log(result);
+        }
+      );
+    }
+  }
+
   handleChange = files => {
     this.setState({
       files: files
     });
   };
-
-//   theme = createMuiTheme({
-//     spacing: 4,
-//     palette: {
-//       primary: {
-//         main: "#007bff"
-//       }
-//     }
-//   });
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <DropzoneArea onChange={this.handleChange} />

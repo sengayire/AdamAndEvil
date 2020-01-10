@@ -42,9 +42,15 @@ class ProfilePage extends Component {
     });
   };
 
+  save = () => {
+    this.setState({
+      clicked: true
+    });
+  };
+
   render() {
     const { ...rest } = this.props;
-    const { classes, state } = this.state;
+    const { classes, state, clicked } = this.state;
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRoundedCircle,
@@ -82,11 +88,16 @@ class ProfilePage extends Component {
                         classes={classes}
                         role="post ads"
                         color="success"
-                        content={<PostAds classes={classes} />}
+                        onClick={this.save}
+                        title="Post Ads"
+                        content={
+                          <PostAds clicked={clicked} classes={classes} />
+                        }
                       />{" "}
                       <ModelButton
                         classes={classes}
                         role="View your ads"
+                        title="Your Ads"
                         content={<AdsImagesDisplay classes={classes} />}
                       />
                       <br />
